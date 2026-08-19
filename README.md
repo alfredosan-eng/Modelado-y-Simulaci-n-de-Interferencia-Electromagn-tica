@@ -1,3 +1,9 @@
+# 🚀 Simulador EMI (UTP vs FTP)
+
+[![Ver Aplicación en Vivo](https://img.shields. strata/badge/¡PROBAR_SIMULADOR!-3b82f6?style=for-the-badge&logo=googlechrome&logoColor=white)]([https://tu-usuario.github.io/nombre-de-tu-repositorio/](https://alfredosan-eng.github.io/Modelado-y-Simulaci-n-de-Interferencia-Electromagn-tica/index.html))
+
+> **Instrucciones:** Haz clic en el botón superior para ejecutar la simulación interactiva en tu navegador.
+
 # Modelado y Simulación de Interferencia Electromagnética (EMI) en Cables Industriales TPU (UTP vs. FTP)
 
 Este repositorio contiene un entorno de simulación computacional interactivo desarrollado en **HTML5 Canvas, CSS3 y JavaScript** enfocado en el análisis de Compatibilidad Electromagnética (EMC). Muestra de forma cuantitativa y cualitativa cómo el campo electromagnético radiado por un motor industrial gobernado por un Variador de Frecuencia (VFD) se acopla a un cable de **Poliuretano Termoplástico (TPU)** sin blindaje (**UTP**) frente a uno con pantalla de aluminio/mylar (**FTP**).

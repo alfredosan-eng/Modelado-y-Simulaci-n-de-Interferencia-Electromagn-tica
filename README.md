@@ -4,11 +4,11 @@
 
 > **Instrucciones:** Haz clic en el botón superior para ejecutar la simulación interactiva en tu navegador.
 
-# Modelado y Simulación de Interferencia Electromagnética (EMI) en Cables Industriales TPU (UTP vs. FTP)
+# Evaluación de Coexistencia Electromagnética (EMC) y Reglas de Separación para Cableado de Datos TPU (UTP vs. FTP)
 
-Este repositorio contiene un entorno de simulación computacional interactivo desarrollado en **HTML5 Canvas, CSS3 y JavaScript** enfocado en el análisis de Compatibilidad Electromagnética (EMC). Muestra de forma cuantitativa y cualitativa cómo el campo electromagnético radiado por un motor industrial gobernado por un Variador de Frecuencia (VFD) se acopla a un cable de **Poliuretano Termoplástico (TPU)** sin blindaje (**UTP**) frente a uno con pantalla de aluminio/mylar (**FTP**).
+Este repositorio alberga un entorno interactivo de simulación para el análisis cuantitativo de la **interferencia por diafonía (Crosstalk) e inducción electromagnética (EMI)** generada por líneas de potencia y señales de conmutación sobre cables industriales de **Poliuretano Termoplástico (TPU)** sin blindaje (**UTP**) frente a versiones apantalladas con lámina de Aluminio/Mylar (**FTP**).
 
----
+La herramienta evalúa la eficacia de la **separación física ($d$)** y el **apantallamiento metálico** bajo normativas internacionales como la **EN 50174-2** y la **IEC 61000-4-4**.---
 
 ## 📐 Fundamentos Teóricos e Ingeniería de EMC
 
@@ -34,6 +34,15 @@ En la zona de campo cercano/transición, la densidad de potencia del campo elect
 $$S_{EMI} \propto \frac{P_{motor}}{d^2}$$
 
 * **Comportamiento en Simulación:** Al reducir la distancia de $4.0\text{ m}$ a $0.5\text{ m}$, el ruido $V_{ruido}$ experimentado por el cable UTP no aumenta proporcionalmente, sino que se incrementa en un **factor de 64x**, deformando totalmente la onda sinusoidal.
+
+* ## 📐 Fundamentos Técnicos y Normativa de Instalación
+
+### 1. La Regla de Separación Física (Norma EN 50174-2)
+En canaletas compartidas y bandejas industriales, la intensidad del acoplamiento inductivo y capacitivo entre cables de energía y cables de datos es inversamente proporcional a la distancia que los separa ($d$) y directamente proporcional a la longitud de recorrido paralelo ($L$).
+
+$$V_{\text{inducido}} \propto \frac{L \cdot \frac{di}{dt}}{d^\gamma}$$
+
+* **Recomendación Estándar:** Para canaletas de aluminio/acero sin tabique separador, la norma establece una distancia mínima de **$20\text{ cm}$** entre cables de potencia unifilares ($>220\text{V}$) y arneses de datos de par trenzado.
 
 ---
 
@@ -64,4 +73,17 @@ El software está compuesto por dos módulos de renderizado continuo a $60\text{
    * Visualización de frentes de onda circulares concéntricos representativos de la densidad de flujo $B(t)$.
    * Renderizado estructural interno de la cubierta TPU, lámina de foil de aluminio, hilo de drenaje y conductores de cobre.
 
+## 🏭 Escenarios Industriales Evaluados en la Simulación
+
+### Escenario A: Bandeja Industrial Compartida (380V/440V + Contactores)
+* **Mecanismo de Interferencia:** Acoplamiento magnético a $50/60\text{ Hz}$ e **impulsos transitorios rápidos (EFT/Burst)** según la norma **IEC 61000-4-4**, generados en los momentos de apertura y cierre de contactores y arrancadores de motores.
+* **Comportamiento UTP:** Produce picos agudos de voltaje fuera de la tolerancia diferencial, desencadenando pérdidas masivas de tramas Ethernet/Fieldbus.
+
+### Escenario B: Canaletas de Oficina (Potencia + Iluminación LED y Fuentes SMPS)
+* **Mecanismo de Interferencia:** Ruido conducido y radiado derivado de los armónicos de alta frecuencia producidos por los rectificadores de fuentes conmutadas (SMPS) y balastos electrónicos.
+* **Comportamiento UTP:** Genera un piso de ruido continuo que degrada la relación señal-ruido (**SNR**), reduciendo la tasa efectiva de transferencia de datos (*throughput*).
+
+### Escenario C: Cadena Portacables Robótica (Servodrives PWM + Encoders TPU)
+* **Mecanismo de Interferencia:** Variaciones severas de voltaje ($dv/dt$) generadas por la modulación por ancho de pulsos (**PWM** a $8\text{--}16\text{ kHz}$) de los servodrives conduciendo junto a los cables de encoders dentro de la misma manguera flexible de TPU.
+* **Comportamiento UTP vs FTP:** El cable **TPU UTP** experimenta falsos pulsos en la lectura de posición del encoder. El **TPU FTP** refleja y deriva a tierra los componentes de alta frecuencia mediante la lámina de aluminio y el hilo de drenaje (*drain wire*).
 ---

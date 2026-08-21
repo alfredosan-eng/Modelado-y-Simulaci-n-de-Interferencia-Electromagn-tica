@@ -1,6 +1,6 @@
 # 🚀 Simulador EMI (UTP vs FTP)
 
-[![Ver Aplicación en Vivo]([https://tu-usuario.github.io/nombre-de-tu-repositorio/](https://alfredosan-eng.github.io/Modelado-y-Simulaci-n-de-Interferencia-Electromagn-tica/index.html)]
+[![Ver Aplicación en Vivo]([[https://alfredosan-eng.github.io/Modelado-y-Simulaci-n-de-Interferencia-Electromagn-tica/index.html]
 
 > **Instrucciones:** Haz clic en el botón superior para ejecutar la simulación interactiva en tu navegador.
 
